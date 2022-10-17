@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'Octomber_Hackathon.api',
     'Octomber_Hackathon.auth_app',
 ]
@@ -112,6 +113,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth_app.password_validation.NumericPasswordValidator',
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
 
 
 # Internationalization
