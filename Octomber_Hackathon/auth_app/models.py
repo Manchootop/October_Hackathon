@@ -57,3 +57,5 @@ class AdvocateProfile(models.Model):
 
     advocate_years_exp = models.IntegerField()
 
+    user = models.ForeignKey(AdvocateUser, on_delete=models.CASCADE, primary_key=True)
+

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'Octomber_Hackathon.api',
     'Octomber_Hackathon.auth_app',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -99,27 +100,29 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth_app.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth_app.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth_app.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth_app.password_validation.NumericPasswordValidator',
-    },
-]
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         'NAME': 'django.contrib.auth_app.password_validation.UserAttributeSimilarityValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth_app.password_validation.MinimumLengthValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth_app.password_validation.CommonPasswordValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth_app.password_validation.NumericPasswordValidator',
+#     },
+# ]
+
+
 
 
 
