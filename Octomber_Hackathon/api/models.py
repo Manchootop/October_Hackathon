@@ -1,6 +1,5 @@
 from django.db import models
 
-from Octomber_Hackathon.auth_app.models import AdvocateProfile
 
 
 class Companies(models.Model):
@@ -14,5 +13,9 @@ class Companies(models.Model):
 
     summary = models.TextField()
 
-    advocates = models.ManyToManyField(AdvocateProfile)
+    def __str__(self):
+        return f'{self.name}'
+
+
+
 

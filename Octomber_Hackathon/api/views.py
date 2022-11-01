@@ -1,7 +1,9 @@
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from rest_framework import generics as api_generic_views, permissions
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-from Octomber_Hackathon.api.serializers import ListAdvocatesSerializer
+from Octomber_Hackathon.api.serializers import ListAdvocatesSerializer, CreateAndEditAdvocateSerializer
 from Octomber_Hackathon.auth_app.models import AdvocateProfile
 
 '''
@@ -26,9 +28,39 @@ from Octomber_Hackathon.auth_app.models import AdvocateProfile
 }
 '''
 
+@api_view(['GET'])
+def endpoints(request):
+    data = ['/advocates', 'advocates/:username']
+    return Response(data)
 
-class ListAdvocatesView(api_generic_views.ListAPIView):
+
+class ListOrCreateAdvocateView(api_generic_views.ListCreateAPIView):
     queryset = AdvocateProfile.objects.all()
-    serializer_class = ListAdvocatesSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateAndEditAdvocateSerializer
+        return ListAdvocatesSerializer
 
+    # query_filter_names = ('username', 'company')
+
+    # /advocates/?name={username}&company={company}
+    # def __apply_query_filters(self, queryset):
+    #     filter_options = {}
+    #     for filter_name in self.query_filter_names:
+    #         value = self.request.query_params.get(filter_name, None)
+    #         if value:
+    #             filter_options[f'{filter_name}_id'] = value
+    #
+    #     return queryset.filter(**filter_options)
+    #
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #
+    #     self.__apply_query_filters(queryset)
+    #
+    #     return queryset
+
+class AdvocateDetailsView(api_generic_views.RetrieveAPIView):
+    queryset = AdvocateProfile.objects.all()
+    serializer_class = CreateAndEditAdvocateSerializer

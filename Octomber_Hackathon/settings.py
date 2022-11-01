@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'october_hack1',
+        'NAME': 'october_hackathon1',
         'USER': 'postgres',
         'PASSWORD': 'Thatshurt',
         'HOST': '127.0.0.1',
