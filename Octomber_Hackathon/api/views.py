@@ -3,7 +3,8 @@ from rest_framework import generics as api_generic_views, permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from Octomber_Hackathon.api.serializers import ListAdvocatesSerializer, CreateAndEditAdvocateSerializer
+from Octomber_Hackathon.api.serializers import ListAdvocatesSerializer, CreateAndEditAdvocateSerializer, \
+    RetrieveAdvocateSerializer
 from Octomber_Hackathon.auth_app.models import AdvocateProfile
 
 '''
@@ -61,6 +62,12 @@ class ListOrCreateAdvocateView(api_generic_views.ListCreateAPIView):
     #
     #     return queryset
 
+
 class AdvocateDetailsView(api_generic_views.RetrieveAPIView):
     queryset = AdvocateProfile.objects.all()
-    serializer_class = CreateAndEditAdvocateSerializer
+    lookup_field = 'username'
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateAndEditAdvocateSerializer
+        return RetrieveAdvocateSerializer

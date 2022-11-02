@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Companies(models.Model):
     COMPANY_MAX_LENGTH = 25
 
@@ -15,7 +14,3 @@ class Companies(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
-
-
-
