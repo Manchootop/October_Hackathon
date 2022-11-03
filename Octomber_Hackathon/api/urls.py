@@ -7,6 +7,7 @@ urlpatterns = (
     
     path('advocates/', views.ListOrCreateAdvocateView.as_view(), name='list advocates'),
     path('advocates/<str:username>/', views.AdvocateDetailsView.as_view(), name='details advocate'),
+
     # path('companies/'),
     # path('companies/<str:id>'),
 )

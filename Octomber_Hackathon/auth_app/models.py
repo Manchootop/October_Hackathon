@@ -55,7 +55,7 @@ class AdvocateProfile(models.Model):
 
     )
 
-    profile_pic = models.URLField(
+    profile_pic = models.ImageField(
     )
 
     short_bio = models.TextField(
@@ -80,6 +80,8 @@ class AdvocateProfile(models.Model):
         null=True,
         blank=True,
     )
+
+    twitter_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.username}'

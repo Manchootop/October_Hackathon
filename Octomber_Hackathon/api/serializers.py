@@ -4,6 +4,12 @@ from Octomber_Hackathon.api.models import Companies
 from Octomber_Hackathon.auth_app.models import AdvocateProfile, AdvocateUser
 
 
+# class LinksSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Links
+#         fields = '__all__'
+#
+
 class CompanySerializer(serializers.ModelSerializer):
     # TODO fix this problem class --> 'CompanySerializer' object has no attribute 'get_employee_count'
     # employee_count = serializers.SerializerMethodField(read_only=True)
@@ -19,6 +25,11 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class ListAdvocatesSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.SerializerMethodField('get_image_url')
+
+    def get_image_url(self, obj):
+        return obj.profile_pic.url
+
     company = CompanySerializer(read_only=True)
 
     class Meta:
@@ -65,3 +76,14 @@ class RetrieveAdvocateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvocateProfile
         fields = '__all__'
+
+
+class PictureSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField('get_image_url')
+
+    class Meta:
+        model = AdvocateProfile
+        fields = ('field', 'image', 'image_url')
+
+    def get_image_url(self, obj):
+        return obj.image.url
