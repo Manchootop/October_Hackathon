@@ -363,3 +363,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'auth_app.AdvocateUser'
+import django_heroku
+
+django_heroku.settings(locals())
