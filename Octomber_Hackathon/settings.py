@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Django settings for Octomber_Hackathon project.
 
@@ -19,7 +18,6 @@ from Octomber_Hackathon.utils import is_production, is_test
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -30,7 +28,6 @@ SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-
 DEBUG = False
 
 ALLOWED_HOSTS = ['mariyan-hackathon.herokuapp.com', '127.0.0.1']
-
 
 # Application definition
 
@@ -51,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -102,7 +98,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -142,7 +137,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -186,9 +180,7 @@ MEDIA_URL = '/media/'
 # }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTH_USER_MODEL = 'auth_app.AdvocateUser'
-=======
 """
 Django settings for Octomber_Hackathon project.
 
@@ -207,8 +199,6 @@ from pathlib import Path
 
 from Octomber_Hackathon.utils import is_production, is_test
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -220,7 +210,6 @@ SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-
 DEBUG = False
 
 ALLOWED_HOSTS = ['mariyan-hackathon.herokuapp.com', '127.0.0.1']
-
 
 # Application definition
 
@@ -241,7 +230,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -271,7 +260,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -292,7 +280,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -332,7 +319,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -376,6 +362,4 @@ MEDIA_URL = '/media/'
 # }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTH_USER_MODEL = 'auth_app.AdvocateUser'
->>>>>>> 653bde7fc03b0315730429cee5e1443ce3e4c6c2

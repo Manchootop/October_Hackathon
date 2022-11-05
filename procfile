@@ -1,1 +1,1 @@
-web: gunicorn Octomber_Hackathon.wsgi --log-file -
+web: gunicorn Octomber_Hackathon.wsgi:application --log-file -
