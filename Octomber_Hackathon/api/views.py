@@ -1,11 +1,12 @@
 from django.http import Http404, JsonResponse
-from rest_framework import generics as api_generic_views, permissions
+from rest_framework import generics as api_generic_views, permissions, filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-
-from Octomber_Hackathon.api.serializers import ListAdvocatesSerializer, CreateAndEditAdvocateSerializer, \
-    RetrieveAdvocateSerializer
+from Octomber_Hackathon.api.models import Companies
+from Octomber_Hackathon.api.serializers import AdvocateListSerializer, AdvocateCreateSerializer, \
+    CompanySerializer, CompanyRetrieveUpdateDestroySerializer, \
+    AdvocateUpdateDestroySerializer, AdvocateRetrieveSerializer
 from Octomber_Hackathon.auth_app.models import AdvocateProfile
 
 '''
@@ -24,7 +25,7 @@ from Octomber_Hackathon.auth_app.models import AdvocateProfile
     },
     "links":{
         "youtube":"youtube.com/username",
-        "twitter":"twitter.com/username",
+        "twitter_link":"twitter_link.com/username",
         "github":"github.com/username",
     }
 }
@@ -33,21 +34,26 @@ from Octomber_Hackathon.auth_app.models import AdvocateProfile
 
 @api_view(['GET'])
 def endpoints(request):
-    data = ['/advocates', 'advocates/:username']
+    data = ['/advocates/', '/advocates/:username', '/advocates/?search=username'] + ['company/', 'company/:name'] + [
+        '/login/', '/register/', 'logout'
+    ]
+
     return Response(data)
 
 
 class ListOrCreateAdvocateView(api_generic_views.ListCreateAPIView):
-    queryset = AdvocateProfile.objects.all()
+    # queryset = AdvocateProfile.objects.all()
+    search_fields = ['username']
+    filter_backends = (filters.SearchFilter,)
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
-            return CreateAndEditAdvocateSerializer
-        return ListAdvocatesSerializer
+            return AdvocateCreateSerializer
+        return AdvocateListSerializer
 
-    # query_filter_names = ('username', 'company')
+    # query_filter_names = ('username')
 
-    # /advocates/?name={username}&company={company}
+    # # /advocates/?name={username}&company={company}
     # def __apply_query_filters(self, queryset):
     #     filter_options = {}
     #     for filter_name in self.query_filter_names:
@@ -64,14 +70,32 @@ class ListOrCreateAdvocateView(api_generic_views.ListCreateAPIView):
     #
     #     return queryset
 
+    def get_queryset(self):
 
-class AdvocateDetailsView(api_generic_views.RetrieveAPIView):
+        queryset = AdvocateProfile.objects.all()
+        username = self.request.query_params.get('username')
+        if username is not None:
+            queryset = queryset.filter(company__advocateprofile__username=username)
+        return queryset
+
+
+class AdvocateRetrieveUpdateDestroyView(api_generic_views.RetrieveUpdateDestroyAPIView):
     queryset = AdvocateProfile.objects.all()
     lookup_field = 'username'
 
     def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return CreateAndEditAdvocateSerializer
-        return RetrieveAdvocateSerializer
+        if self.request.method == 'GET':
+            return AdvocateRetrieveSerializer
+        else:
+            return AdvocateUpdateDestroySerializer
 
 
+class CompanyListCreateView(api_generic_views.ListCreateAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
+
+
+class CompanyRetrieveUpdateDestroyView(api_generic_views.RetrieveUpdateDestroyAPIView):
+    queryset = Companies
+    serializer_class = CompanyRetrieveUpdateDestroySerializer
+    lookup_field = 'name'

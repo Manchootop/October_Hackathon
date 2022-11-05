@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+from Octomber_Hackathon.utils import is_production, is_test
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -23,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mariyan-hackathon.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -107,24 +110,23 @@ REST_FRAMEWORK = {
     ]
 }
 
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         'NAME': 'django.contrib.auth_app.password_validation.UserAttributeSimilarityValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth_app.password_validation.MinimumLengthValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth_app.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth_app.password_validation.NumericPasswordValidator',
-#     },
-# ]
+AUTH_PASSWORD_VALIDATORS = []
 
-
-
-
+if is_production():
+    AUTH_PASSWORD_VALIDATORS.extend([
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ])
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -143,9 +145,40 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+# LOGGING_LEVEL = 'DEBUG'
+#
+# if is_production():
+#     LOGGING_LEVEL = 'INFO'
+# elif is_test():
+#     LOGGING_LEVEL = 'CRITICAL'
+# LOGGING = {
+#     'version': 1,
+#     'handlers': {
+#         'console': {
+#             # DEBUG, WARNING, INFO, ERROR, CRITICAL,
+#             'level': LOGGING_LEVEL,
+#             'filters': [],
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': LOGGING_LEVEL,
+#             'handlers': ['console'],
+#         }
+#     }
+# }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
