@@ -199,7 +199,6 @@ from pathlib import Path
 
 from Octomber_Hackathon.utils import is_production, is_test
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -282,12 +281,12 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 # }
 
 DATABASES = {
- 'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2qj6161kfcs97',
-        'USER': 'nkvgprpuqrsqlo',
-        'PASSWORD': '0e3615c54399e3c285cffbb2c3b1d8de4452e05138e48d65afaa9750264748b7',
-        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd6sgl5a4rqi7e6',
+        'USER': 'junerbjermdmrm',
+        'PASSWORD': '9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5',
+        'HOST': 'ec2-54-170-90-26.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
