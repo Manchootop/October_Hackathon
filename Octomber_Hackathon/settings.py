@@ -27,8 +27,9 @@ SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mariyan-hackathon-cli.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = ['mariyan-hackathon-cli.herokuapp.com', '127.0.0.1']
 # Application definition
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
