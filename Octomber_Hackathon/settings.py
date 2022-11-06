@@ -270,17 +270,27 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'october_hackathon1',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Thatshurt',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
-    'default': {
+ 'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'october_hackathon1',
-        'USER': 'postgres',
-        'PASSWORD': 'Thatshurt',
-        'HOST': '127.0.0.1',
+        'NAME': 'd2qj6161kfcs97',
+        'USER': 'nkvgprpuqrsqlo',
+        'PASSWORD': '0e3615c54399e3c285cffbb2c3b1d8de4452e05138e48d65afaa9750264748b7',
+        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
