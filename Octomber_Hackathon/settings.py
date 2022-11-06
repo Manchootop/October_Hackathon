@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['mariyan-hackathon.herokuapp-cli.com', '127.0.0.1']
-
+# ALLOWED_HOSTS = ['mariyan-hackathon-cli.herokuapp.com', '127.0.0.1']
 # Application definition
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -81,23 +81,23 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'october_hackathon1',
-        'USER': 'postgres',
-        'PASSWORD': 'Thatshurt',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'october_hackathon1',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Thatshurt',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -199,7 +199,6 @@ from pathlib import Path
 
 from Octomber_Hackathon.utils import is_production, is_test
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -207,7 +206,7 @@ from Octomber_Hackathon.utils import is_production, is_test
 SECRET_KEY = 'django-insecure-e&vi9fh87*ku-d_qtq87i$jgc^kkd#$kskle%ua^fh#s%ovd@-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mariyan-hackathon-cli.herokuapp.com', '127.0.0.1']
 
@@ -270,17 +269,28 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'october_hackathon1',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Thatshurt',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'october_hackathon1',
-        'USER': 'postgres',
-        'PASSWORD': 'Thatshurt',
-        'HOST': '127.0.0.1',
+        'NAME': 'd6sgl5a4rqi7e6',
+        'USER': 'junerbjermdmrm',
+        'PASSWORD': '9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5',
+        'HOST': 'ec2-54-170-90-26.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
-
+DATABASE_URL = 'postgres://junerbjermdmrm:9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5@ec2-54-170-90-26.eu-west-1.compute.amazonaws.com:5432/d6sgl5a4rqi7e6'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -327,7 +337,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static/',
 ]
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -363,6 +373,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'auth_app.AdvocateUser'
-import django_heroku
-
-django_heroku.settings(locals())
+# import django_heroku
+#
+# django_heroku.settings(locals())
