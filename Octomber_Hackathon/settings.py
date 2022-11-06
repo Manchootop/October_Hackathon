@@ -290,6 +290,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+DATABASE_URL = 'postgres://junerbjermdmrm:9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5@ec2-54-170-90-26.eu-west-1.compute.amazonaws.com:5432/d6sgl5a4rqi7e6'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -336,7 +337,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static/',
 ]
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
