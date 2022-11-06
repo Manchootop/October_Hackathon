@@ -2,10 +2,6 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from Octomber_Hackathon.api import views
-from Octomber_Hackathon.api.views import ListOrCreateAdvocateView
-router = DefaultRouter()
-router.register('api', 'ListOrCreateAdvocateView')
-
 urlpatterns = [
     path('', views.endpoints, name='endpoints'),
 
