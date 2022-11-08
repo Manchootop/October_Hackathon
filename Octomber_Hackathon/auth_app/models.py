@@ -58,7 +58,8 @@ class AdvocateProfile(models.Model):
     profile_pic = models.ImageField(
     )
 
-    bio = models.TextField()
+    short_bio = models.TextField()
+    long_bio = models.TextField()
 
     advocate_years_exp = models.IntegerField(
     )
