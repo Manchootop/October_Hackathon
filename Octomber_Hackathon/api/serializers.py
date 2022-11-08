@@ -40,7 +40,7 @@ class AdvocateListSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvocateProfile
 #         fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
-          field = '__all__'
+          fields = '__all__'
 
 
 '''
@@ -69,7 +69,7 @@ class AdvocateCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvocateProfile
 #         fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
-        fields = '__all__'
+          fields = '__all__'
 
     # def create(self, validated_data):
     #     validated_data['user'] = self.context['request'].user
