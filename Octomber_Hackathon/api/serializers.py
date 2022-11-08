@@ -68,7 +68,8 @@ class AdvocateListSerializer(serializers.ModelSerializer):
 class AdvocateCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
+#         fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
+        fields = '__all__'
 
     # def create(self, validated_data):
     #     validated_data['user'] = self.context['request'].user
