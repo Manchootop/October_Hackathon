@@ -39,7 +39,7 @@ class AdvocateListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'twitter', 'company']
+        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'company']
 
 '''
 {
@@ -66,7 +66,7 @@ class AdvocateListSerializer(serializers.ModelSerializer):
 class AdvocateCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'twitter', 'company']
+        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'company']
     # def create(self, validated_data):
     #     validated_data['user'] = self.context['request'].user
 
@@ -76,7 +76,7 @@ class AdvocateRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'twitter', 'company']
+        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'company']
 
 
 class AdvocateUpdateDestroySerializer(serializers.ModelSerializer):
@@ -86,4 +86,4 @@ class AdvocateUpdateDestroySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'twitter', 'company']
+        fields = ['profile_pic', 'username', 'short_bio', 'long_bio', 'advocate_years_exp', 'company']
