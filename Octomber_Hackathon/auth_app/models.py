@@ -78,7 +78,7 @@ class AdvocateProfile(models.Model):
         blank=True,
     )
 
-    twitter = models.URLField(null=True, blank=True)
+#     twitter = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.username}'
