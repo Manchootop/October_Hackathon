@@ -283,14 +283,15 @@ WSGI_APPLICATION = 'Octomber_Hackathon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6sgl5a4rqi7e6',
-        'USER': 'junerbjermdmrm',
-        'PASSWORD': '9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5',
-        'HOST': 'ec2-54-170-90-26.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd6hkqggm72sd4c',
+        'USER': 'yjghblucqeuude',
+        'PASSWORD': 'c7000c91a817dd1d2704c5e37438679c7ac317b8b54d2f6bc46a971efcba2190',
+        'HOST': 'ec2-34-248-169-69.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
-DATABASE_URL = 'postgres://junerbjermdmrm:9516c16cc8b576170cf881b15453bf185d6b69e56669344dcb553a013db34ce5@ec2-54-170-90-26.eu-west-1.compute.amazonaws.com:5432/d6sgl5a4rqi7e6'
+
+DATABASE_URL = 'postgres://yjghblucqeuude:c7000c91a817dd1d2704c5e37438679c7ac317b8b54d2f6bc46a971efcba2190@ec2-34-248-169-69.eu-west-1.compute.amazonaws.com:5432/d6hkqggm72sd4c'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
