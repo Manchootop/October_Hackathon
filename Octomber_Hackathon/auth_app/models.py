@@ -1,46 +1,10 @@
-from rest_framework import serializers
+from django.contrib.auth import models as auth_models
+from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
+from django.db import models
 
 from Octomber_Hackathon.api.models import Companies
-from Octomber_Hackathon.auth_app.models import AdvocateProfile
-
-
-# class LinksSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Links
-#         fields = '__all__'
-#
-
-class CompanyRetrieveUpdateDestroySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Companies
-        fields = '__all__'
-
-
-class CompanySerializer(serializers.ModelSerializer):
-    # TODO fix this problem class --> 'CompanySerializer' object has no attribute 'get_employee_count'
-    # employee_count = serializers.SerializerMethodField(read_only=True)
-    class Meta:
-        model = Companies
-        fields = '__all__'
-
-    # @staticmethod
-    # def get_employees_count(self, obj):
-    #     count = obj.advocate_set.count()
-    #     return count
-
-
-class AdvocateListSerializer(serializers.ModelSerializer):
-    # profile_pic = serializers.SerializerMethodField('get_image_url')
-    #
-    # def get_image_url(self, obj):
-    #     return obj.profile_pic.url
-
-    company = CompanySerializer(read_only=True)
-
-    class Meta:
-        model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
-
+from Octomber_Hackathon.auth_app.managers import AdvocateUserManager
 
 '''
 {
@@ -64,28 +28,56 @@ class AdvocateListSerializer(serializers.ModelSerializer):
 }'''
 
 
-class AdvocateCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
-    # def create(self, validated_data):
-    #     validated_data['user'] = self.context['request'].user
+class AdvocateUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
+    email = models.EmailField(unique=True)
+
+    date_joined = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    is_staff = models.BooleanField(
+        default=False,
+    )
+
+    USERNAME_FIELD = 'email'
+
+    objects = AdvocateUserManager()
+
+    def __str__(self):
+        return f'{self.email}'
 
 
-class AdvocateRetrieveSerializer(serializers.ModelSerializer):
-    company = CompanySerializer(read_only=True)
+class AdvocateProfile(models.Model):
+    NAME_MAX_LENGTH = 25
 
-    class Meta:
-        model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
+    username = models.CharField(
+        max_length=NAME_MAX_LENGTH,
 
+    )
 
-class AdvocateUpdateDestroySerializer(serializers.ModelSerializer):
-    # company = CompanySerializer(read_only=True)
+    profile_pic = models.ImageField(
+    )
 
-    profile_pic = serializers.ImageField(required=False)
+    bio = models.TextField()
 
-    class Meta:
-        model = AdvocateProfile
-        fields = ['profile_pic', 'username', 'bio', 'advocate_years_exp', 'twitter', 'company']
+    advocate_years_exp = models.IntegerField(
+    )
+    #
+    # user = models.OneToOneField(
+    #         AdvocateUser,
+    #         on_delete=models.CASCADE,
+    #         null=True,
+    #         blank=True,
+    #     )
 
+    company = models.ForeignKey(
+        Companies,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+
+    twitter = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.username}'
